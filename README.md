@@ -26,7 +26,7 @@ The corpus contains a high number of software-related entities labeled under 12 
 To download the full dataset, please navigate to this [folder](src/data/wikiser).
 
 ## Models
-Our finetuned checkpoints are available through HuggingFace: [wikiser-bert-case](https://huggingface.co/taidng/wikiser-bert-base) and [wikiser-bert-large](https://huggingface.co/taidng/wikiser-bert-large).
+The finetuned checkpoints are available through HuggingFace: [wikiser-bert-case](https://huggingface.co/taidng/wikiser-bert-base) and [wikiser-bert-large](https://huggingface.co/taidng/wikiser-bert-large).
 
 You can load in the model by the standard API:
 ```python
@@ -37,16 +37,18 @@ model = AutoModelForTokenClassification.from_pretrained("taidng/wikiser-bert-bas
 ```
 
 ## Train with Self-regularization
-We suggest using [conda](https://docs.conda.io/en/main/miniconda.html#installing) to set up your environment. To begin, we create a new environment using `environment.yml`, naming it "ser" by default.
+We suggest using [conda](https://docs.conda.io/en/main/miniconda.html#installing) to set up your environment. To begin, create a new environment using `environment.yml`, naming it "ser" by default.
 ```
 conda env create -f environment.yml
 ```
 
-To start train script:
+To start training script with BERT and self-regularization:
 ```
-python3 train_nll.py --model_name_or_path=bert-base-cased  --alpha=10 --n_model=2 --data_dir=data/wikiser-small --epochs=25
+python3 train_nll.py --model_name_or_path=bert-base-cased --alpha=10 --n_model=2 --dropout_prob=0.1 --data_dir=data/wikiser-small --epochs=25
 ```
-* Datasets: WikiSER_small, [S-NER](https://ieeexplore.ieee.org/document/7476633), and relabeled [SoftNER](https://arxiv.org/abs/2005.01634).
+* `--alpha`: positive multiplier to weighing the agreement loss
+* `--n_model`: _k_ number of forward passes for regularization 
+* `--data_dir`: Specify one dataset out of `wikiser-small`, [`sner`](https://ieeexplore.ieee.org/document/7476633), and relabeled [`softner-9`](https://arxiv.org/abs/2005.01634).
 
 By default, training loss and evaluation statistics are stored in [wandb](https://wandb.ai/site).
 
