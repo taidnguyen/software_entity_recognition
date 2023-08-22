@@ -1,4 +1,4 @@
-# Software Entity Recognition with Self-regularization
+# Software Entity Recognition with Noisy-label Learning
 
 Official implementation for our paper ["Software Entity Recognition with Noise-robust Learning"](https://arxiv.org/abs/2308.10564), ASE 2023.
 
