@@ -1,0 +1,13 @@
+name: ser
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip:
+    - wandb==0.15.8
+    - numpy==1.25.2
+    - torch==2.0.1
+    - tqdm==4.66.1
+    - transformers==4.31.0
+    - truecase==0.0.14
+    - seqeval==1.2.2

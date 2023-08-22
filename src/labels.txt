@@ -1,0 +1,12 @@
+Application
+Algorithm
+Protocol
+Language
+General_Concept
+Operating_System
+Device
+Data_Structure
+License
+Architecture
+Error_Name
+Library

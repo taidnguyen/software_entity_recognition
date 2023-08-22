@@ -1,0 +1,9 @@
+Algorithm
+Application
+Data_Structure
+Device
+Error_Name
+Language
+Library
+License
+Operating_System
