@@ -4,8 +4,8 @@ Official implementation for our paper ["Software Entity Recognition with Noise-r
 
 
 ## WikiSER
-WikiSER corpus includes 1.7M sentences with named entity labels extracted from Wikipedia.
-The corpus contains a high number of software-related entities labeled under 12 fine-grained categories:
+WikiSER corpus includes 1.7M sentences with named entity labels extracted from 79k Wikipedia articles.
+Relevant software named entities are labeled under 12 fine-grained categories:
 
 | Type             | Examples                                              |
 |------------------|-------------------------------------------------------|
@@ -22,6 +22,12 @@ The corpus contains a high number of software-related entities labeled under 12 
 | Operating_System | Linux, Ubuntu, Red Hat OS, MorphOS                   |
 | Protocol         | TLS, FTPS, HTTP 404                                   |
 
+WikiSER is organized by the Wiki article in which the data was scraped from.
+    
+    |-- Adobe_Flash.txt
+    |-- Linux.txt
+    |-- Java_(programming_language).txt
+    |-- ...
 
 To download the full dataset, please navigate to this [folder](src/data/wikiser).
 
