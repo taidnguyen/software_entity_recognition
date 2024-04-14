@@ -23,13 +23,15 @@ Relevant software named entities are labeled under 12 fine-grained categories:
 | Protocol         | TLS, FTPS, HTTP 404                                   |
 
 WikiSER is organized by the Wiki article in which the data was scraped from.
-    
+
     |-- Adobe_Flash.txt
     |-- Linux.txt
     |-- Java_(programming_language).txt
     |-- ...
 
-To download the full dataset, please navigate to this [folder](src/data/wikiser).
+Each sentences are split by `<s>...</s>` and tokenized with [stokenizer](https://github.com/jeniyat/StackOverflowNER/blob/master/code/SOTokenizer/stokenizer.py).
+
+Download the full dataset from [Huggingface](https://huggingface.co/datasets/taidng/WikiSER) or this [folder](src/data/wikiser).
 
 ## Models
 The finetuned checkpoints are available through HuggingFace: [wikiser-bert-case](https://huggingface.co/taidng/wikiser-bert-base) and [wikiser-bert-large](https://huggingface.co/taidng/wikiser-bert-large).
@@ -53,7 +55,7 @@ To start training script with BERT and self-regularization:
 python3 train_nll.py --model_name_or_path=bert-base-cased --alpha=10 --n_model=2 --dropout_prob=0.1 --data_dir=data/wikiser-small --epochs=25
 ```
 * `--alpha`: positive multiplier to weighing the agreement loss
-* `--n_model`: _k_ number of forward passes for regularization 
+* `--n_model`: _k_ number of forward passes for regularization
 * `--data_dir`: Specify one dataset out of `wikiser-small`, [`sner`](https://ieeexplore.ieee.org/document/7476633), and relabeled [`softner-9`](https://arxiv.org/abs/2005.01634).
 
 By default, training loss and evaluation statistics are stored in [wandb](https://wandb.ai/site).
